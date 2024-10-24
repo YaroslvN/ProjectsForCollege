@@ -1,8 +1,25 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Teacher>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Преподаватели и их проекты</h1>
+
+@foreach (var teacher in Model)
+{
+    <h2>@teacher.Name</h2>
+    @if (teacher.Projects != null && teacher.Projects.Any())
+    {
+        <ul>
+        @foreach (var project in teacher.Projects)
+        {
+            <li>
+                <a href="@Url.Action("Details", "Home", new { teacherId = teacher.Id, projectId = project.Id })">
+                    @project.Name
+                </a>
+            </li>
+        }
+        </ul>
+    }
+    else
+    {
+        <p>Нет проектов.</p>
+    }
+}
