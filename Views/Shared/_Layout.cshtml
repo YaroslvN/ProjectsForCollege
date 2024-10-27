@@ -4,16 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProjectsForCollege</title>
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-       
+        <div class="container-header">
+            <div class="avatar-container">
+                <img class="avatar" src="/images/YaroslavAvatar.png" alt="Аватар Ярослава" />
+                <div class="text-stripe">
+                    <h1>Мои проекты</h1>
+                </div>
+            </div>
+        </div>
+
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div>
+             @RenderBody()
+        </div>
+       
     </div>
 
     <footer class="border-top footer text-muted">
