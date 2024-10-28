@@ -1,29 +1,30 @@
 ﻿@model List<Teacher>
 
-<div class="left-panel">
-    <div class="menu">
-        <div class="menu-item">
-            <div class="menu-item-front">
-                <div class="menu-item-header">
-                    <h4>Тюгашева Василиса Александровна</h4>
-                    <img class="avatar" src="/images/YaroslavAvatar.png" alt="Аватар Ярослава" />
+<div class="container">
+    <div class="left-panel">
+        <div class="menu">
+            @for(int i = 0; i < Model.Count; i++)
+            {
+                <div class="menu-item">
+                    <div class="menu-item-front">
+                        <div class="menu-item-header">
+                            <h3>Тюгашева Василиса Александровна</h3>
+                            <img class="avatar" src="/images/YaroslavAvatar.png" alt="Аватар Ярослава" />
+                        </div>
+                        <div class="menu-item-body">
+                            @foreach(var project in Model[i].Projects) {
+                                <button>@project.Name</button>
+                            }
+                        </div>
+                    </div>
+                    <div class="menu-item-back"></div> <!-- Исправлено закрытие тега -->
                 </div>
-            </div>
-            <div class="menu-item-back"/>
+            }
+        </div> <!-- Закрывающий тег для .menu -->
+    </div>
+    <div class="right-panel">
+        <div class="main">
+            <!-- Основное содержимое правой панели -->
         </div>
-         <div class="menu-item">
-            <div class="menu-item-front">
-                <div class="menu-item-header">
-                    <h4>Тюгашева Василиса Александровна</h4>
-                    <img class="avatar" src="/images/YaroslavAvatar.png" alt="Аватар Ярослава" />
-                </div>
-            </div>
-            <div class="menu-item-back"/>
-        </div>
-    </dif>
-</div>
-<div class="right-panel">
-    <div class="main">
-
     </div>
 </div>
