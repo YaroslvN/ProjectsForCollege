@@ -30,5 +30,16 @@ namespace ProjectsForCollege.Controllers
 
             return View(project);
         }
+
+        [HttpPost]
+        public IActionResult SetHeader(int teacherId, int projectId)
+        {
+            var teacher = teachers.FirstOrDefault(t => t.Id == teacherId);
+            var project = teacher?.Projects.FirstOrDefault(p => p.Id == projectId);
+
+            if (project == null) return NotFound();
+
+           return View(project);
+        }
     }
 }

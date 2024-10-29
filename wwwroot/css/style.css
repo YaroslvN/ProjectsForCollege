@@ -3,18 +3,18 @@
     display: flex;
     align-items: center; /* Выравнивает по верхнему краю */
     justify-content: center;
-    
+    margin: 20px;
 }
 
 /* Общие стили для меню */
 .menu {
     display: block;
-    margin: 40px;
+    margin: 50px;
 }
 
 .menu-item {
     position: relative;
-    margin-top: 60px; 
+    margin-top: 80px; 
 }
 
 /* Передний элемент меню */
@@ -47,13 +47,22 @@
     justify-content: center;
     border-bottom: 2px black solid;
     border-radius: 20px;
+    padding: 10px;
+}
+
+.menu-item-header-avatar{
+    width: 80px; /* Размер фотографии */
+  height: 80px;
+  border-radius: 50%; /* Круглая форма */
+  z-index: 1;
 }
 
 /* Текст в заголовке */
 .menu-item-header h3 {
     white-space: normal; 
+    font-size: 21px;
     overflow-wrap: break-word; 
-    width: 150px;
+    width: 200px;
 }
 
 /* Тело элемента меню */
@@ -70,9 +79,9 @@
     border-radius: 0px 20px 20px 0px;
     padding: 10px;
     font-size: 15px;
-    width: 50%;
+    width: 80%;
     color: white;
-    background: linear-gradient(90deg, rgba(23,35,62,1) 40%, rgba(60,108,186,1) 60%);
+    background-color: rgb(63,94,251);
     transition: transform 0.5s ease-out; /* Плавный эффект при наведении */
 }
 
@@ -84,17 +93,22 @@
 /* Основной контент правой панели */
 .main-front {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 700px;
     height: 700px;
-    margin: 40px;
+    margin: 40px 40px 0px 0px;
+    border: 2px black solid;
+    position: relative;
+    z-index: 1;
 }
 
 .main-back {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 700px;
     height: 700px;
-    margin: 40px;
-    margin: -330px 0 0 40px;
+    margin: -740px 0px 0px 40px;
+    border: 2px black solid;
+    position: relative;
+    z-index: 0;
 }
