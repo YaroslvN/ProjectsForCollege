@@ -9,7 +9,7 @@
 /* Общие стили для меню */
 .menu {
     display: block;
-    margin: 60px;
+    margin: 40px;
 }
 
 .menu-item {
@@ -82,10 +82,19 @@
 }
 
 /* Основной контент правой панели */
-.main {
-   
+.main-front {
     background-color: white;
     border-radius: 10px;
     width: 700px;
     height: 700px;
+    margin: 40px;
+}
+
+.main-back {
+    background-color: white;
+    border-radius: 10px;
+    width: 700px;
+    height: 700px;
+    margin: 40px;
+    margin: -330px 0 0 40px;
 }

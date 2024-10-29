@@ -1,8 +1,18 @@
-body {
-  background: linear-gradient(90deg, rgba(23,35,62,1) 14%, rgba(60,108,186,1) 49%, rgba(208,211,216,1) 82%);
+html{
+  background: rgb(63,94,251);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  display: flex;
+  justify-content: center;
 }
 
-
+body {
+  justify-content: center;
+  /* background-color: rgb(0,0,0,30%);
+  border: 5px black solid; */
+  padding: 30px;
+  height: 100px;
+  
+}
 
 .avatar-container {
   position: relative;
@@ -20,15 +30,14 @@ body {
 
 .text-stripe {
   background-color: white;
+  width: 100%;
   padding: 10px 50px;
   border-radius: 25px; /* Закругленные края полоски */
   border: 2px black solid;
   display: flex;
-  align-items: center;
 }
 
 .text-stripe h1 {
   margin: 0;
-  font-size: 1.2em;
   white-space: nowrap;
 }
