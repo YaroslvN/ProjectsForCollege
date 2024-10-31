@@ -9,7 +9,7 @@
                     <div class="menu-item-front">
                         <div class="menu-item-header">
                             <h3>@Model[i].Name</h3>
-                            <img class="menu-item-header-avatar" src="/images/YaroslavAvatar.png" alt="Аватар Ярослава" />
+                            <img class="menu-item-header-avatar" src=@Model[i].ImagePath alt="Аватар Ярослава" />
                         </div>
                         <div class="menu-item-body">
                             @foreach(var project in Model[i].Projects) {
@@ -39,19 +39,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Получаем все кнопки с классом project-button
-    const projectButtons = document.querySelectorAll('.project-button');
-
-    // Добавляем обработчик события на каждую кнопку
-    projectButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Получаем имя проекта из атрибута data-project-name
-            const projectName = this.getAttribute('data-project-name');
-            
-            // Обновляем содержимое main-body с именем выбранного проекта
-            document.getElementById('main-body').innerText = projectName;
-        });
-    });
-</script>
