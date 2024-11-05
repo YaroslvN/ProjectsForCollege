@@ -13,7 +13,7 @@
                         </div>
                         <div class="menu-item-body">
                             @foreach(var project in Model[i].Projects) {
-                                <button class="project-button" data-project-name="@project.Name">@project.Name</button>
+                                <button class="project-button button" data-project-name="@project.Name">@project.Name</button>
                             }
                         </div>
                     </div>
@@ -24,18 +24,41 @@
     </div>
     <div class="right-panel">
         <div class="main">
-        <div class="main-front">
-            <div class="main-header" id="main-header">
-                    <!-- Имя выбранного проекта будет здесь -->
-            </div>
-            <div class="main-body">
+            <div class="main-front">
+                <div class="main-header" id="main-header">
+                    <h3>@Model[0].Projects[0].Description</h3>
+                </div>
+                <div class="main-body">
+                    <img src="@Model[0].ImagePath"/>
+                </div>
+                <div class="main-footer">
+                    <button class="switch-project-right button">Вперед</button>
+                    <button class="switch-project-left button">Назад</button>
+                </div>
 
             </div>
-        </div>
-        <div class="main-back">
-        
-        </div>
-            <!-- Основное содержимое правой панели -->
+            <div class="main-back"></div> 
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const projectButtons = document.querySelectorAll('.project-button');
+        
+        projectButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const projectName = this.getAttribute('data-project-name');
+                
+                // Отправляем AJAX-запрос
+                fetch(`/Controller/UpdateContent?projectName=${projectName}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        // Обновляем содержимое в .main-body
+                        document.querySelector('#main-body').innerHTML = data;
+                    })
+                    .catch(error => console.error('Ошибка:', error));
+            });
+        });
+    });
+</script>

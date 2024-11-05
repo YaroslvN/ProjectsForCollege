@@ -28,5 +28,19 @@ namespace ProjectsForCollege.Controllers
 
         return View(project);
     }
+
+public IActionResult UpdateContent(string projectName)
+        {
+            // Находим проект по имени
+            var project = _context.Projects
+                .Include(p => p.TeacherId) // Включаем учителя, если требуется
+                .FirstOrDefault(p => p.Name == projectName);
+
+            if (project == null) return NotFound();
+
+            // Возвращаем частичное представление с контентом проекта
+            return PartialView("_ProjectContent", project);
+        }
+
     }
 }
