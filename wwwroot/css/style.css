@@ -71,6 +71,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    background-color: white;
 }
 
 /* Кнопка внутри тела меню */
@@ -83,15 +84,15 @@
     transition: transform 0.5s ease-out; /* Плавный эффект при наведении */
 }
 
-.menu-item-body button {
+.menu-item-body a {
     margin: 10px;
     border-radius: 0px 20px 20px 0px;
     padding: 10px;
-    width: 80%;
+    width: 60%;
 }
 
 /* Эффект наведения на кнопку */
-.menu-item-body button:hover {
+.menu-item-body a:hover {
     transform: translateX(30px); /* Сдвиг вправо */
 }
 

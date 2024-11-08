@@ -1,6 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ProjectsForCollege.Controllers
 {
@@ -19,6 +20,49 @@ namespace ProjectsForCollege.Controllers
         return View(teachers);
     }
 
+    public IActionResult ProjectDetails(int projectId)
+    {
+        Project project = _context.Projects.FirstOrDefault(p => p.Id == projectId);
+        if (project == null) return NotFound();
+
+        string partialViewName = project.Id switch
+            {
+                1 => "Sp_ProjectOne",
+                2 => "Sp_ProjectTwo",
+                3 => "Sp_ProjectThree",
+                _ => "Sp_ProjectOne"
+            };
+
+        return PartialView(partialViewName, project); // Вернуть частичное представление
+    }
+[HttpPost]
+    public IActionResult GenerateRectangles(int n)
+    {
+        ViewBag.RectangleCount = n;
+        return PartialView("_RectangleDimensions");
+    }
+
+    [HttpPost]
+    public IActionResult CalculateMinArea(int[] a, int[] b)
+    {
+        if (a.Length != b.Length || a.Length == 0)
+            return BadRequest("Ошибка в данных.");
+
+        int minArea = int.MaxValue;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            int area = a[i] * b[i];
+            if (area < minArea)
+            {
+                minArea = area;
+            }
+        }
+
+        return Json(new { minArea });
+    }
+    
+
     [HttpPost]
     public IActionResult SetHeader(int teacherId, int projectId)
     {
@@ -28,19 +72,6 @@ namespace ProjectsForCollege.Controllers
 
         return View(project);
     }
-
-public IActionResult UpdateContent(string projectName)
-        {
-            // Находим проект по имени
-            var project = _context.Projects
-                .Include(p => p.TeacherId) // Включаем учителя, если требуется
-                .FirstOrDefault(p => p.Name == projectName);
-
-            if (project == null) return NotFound();
-
-            // Возвращаем частичное представление с контентом проекта
-            return PartialView("_ProjectContent", project);
-        }
 
     }
 }

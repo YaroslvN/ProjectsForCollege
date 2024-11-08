@@ -1,0 +1,66 @@
+@model Project
+@{
+    ViewData["Title"] = "Минимальная площадь прямоугольников";
+    @* int rectangleCount = ViewBag.RectangleCount; *@
+}
+
+@{
+    ViewData["Title"] = "Минимальная площадь прямоугольников";
+}
+
+<div class="main-front">
+    <div class="main-header" id="main-header">
+        <h3>@Model.Description</h3>
+    </div>
+
+    <div class="main-body">
+        <!-- Форма для ввода количества прямоугольников -->
+        <form id="rectangleForm" method="post" asp-action="GenerateRectangles">
+            <label for="n">Количество прямоугольников:</label>
+            <input type="number" id="n" name="n" required min="1" />
+            <button type="submit">Далее</button>
+        </form>
+
+        <!-- Контейнер для динамически добавляемых полей -->
+        <div id="rectangleInputs"></div>
+
+        <!-- Кнопка для расчета минимальной площади -->
+        <button id="calculateAreaButton" style="display: none;">Рассчитать минимальную площадь</button>
+
+        <!-- Контейнер для вывода результата -->
+        <div id="minAreaResult" style="margin-top: 15px;"></div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // Обработчик для формы ввода количества прямоугольников
+    $("#rectangleForm").on("submit", function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: $(this).attr("action"),
+            type: "POST",
+            data: $(this).serialize(),
+            success: function (response) {
+                $("#rectangleInputs").html(response);  // Загрузить поля для сторон прямоугольников
+                $("#calculateAreaButton").show();       // Показать кнопку для расчета площади
+                $("#minAreaResult").empty();            // Очистить предыдущий результат
+            }
+        });
+    });
+
+    // Обработчик для кнопки расчета минимальной площади
+    $("#calculateAreaButton").on("click", function () {
+        var formData = $("#dimensionsForm").serialize();
+        $.ajax({
+            url: '/Home/CalculateMinArea',  // Убедитесь, что URL совпадает с маршрутом контроллера
+            type: "POST",
+            data: formData,
+            success: function (response) {
+                $("#minAreaResult").html("<strong>Минимальная площадь:</strong> " + response.minArea);
+            }
+        });
+    });
+});
+</script>

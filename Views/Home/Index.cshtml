@@ -1,30 +1,6 @@
 ﻿@model List<Teacher>
 
-<div class="container">
-    <div class="left-panel">
-        <div class="menu">
-            @for(int i = 0; i < Model.Count; i++)
-            {
-                <div class="menu-item">
-                    <div class="menu-item-front">
-                        <div class="menu-item-header">
-                            <h3>@Model[i].Name</h3>
-                            <img class="menu-item-header-avatar" src=@Model[i].ImagePath alt="Аватар Ярослава" />
-                        </div>
-                        <div class="menu-item-body">
-                            @foreach(var project in Model[i].Projects) {
-                                <button class="project-button button" data-project-name="@project.Name">@project.Name</button>
-                            }
-                        </div>
-                    </div>
-                    <div class="menu-item-back"></div> <!-- Исправлено закрытие тега -->
-                </div>
-            }
-        </div> <!-- Закрывающий тег для .menu -->
-    </div>
-    <div class="right-panel">
-        <div class="main">
-            <div class="main-front">
+ <div class="main-front">
                 <div class="main-header" id="main-header">
                     <h3>@Model[0].Projects[0].Description</h3>
                 </div>
@@ -37,28 +13,4 @@
                 </div>
 
             </div>
-            <div class="main-back"></div> 
-        </div>
-    </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const projectButtons = document.querySelectorAll('.project-button');
-        
-        projectButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const projectName = this.getAttribute('data-project-name');
-                
-                // Отправляем AJAX-запрос
-                fetch(`/Controller/UpdateContent?projectName=${projectName}`)
-                    .then(response => response.text())
-                    .then(data => {
-                        // Обновляем содержимое в .main-body
-                        document.querySelector('#main-body').innerHTML = data;
-                    })
-                    .catch(error => console.error('Ошибка:', error));
-            });
-        });
-    });
-</script>

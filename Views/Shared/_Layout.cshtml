@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model List<Teacher>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,12 +20,61 @@
             </div>
         </div>
     </header>
-
-     @RenderBody()
-       
+<div class="container">
+    <div class="left-panel">
+        <div class="menu">
+            @for(int i = 0; i < Model.Count; i++)
+            {
+                <div class="menu-item">
+                    <div class="menu-item-front">
+                        <div class="menu-item-header">
+                            <h3>@Model[i].Name</h3>
+                            <img class="menu-item-header-avatar" src=@Model[i].ImagePath alt="Аватар Ярослава" />
+                        </div>
+                        <div class="menu-item-body">
+                             @foreach (var project in Model[i].Projects)
+                {
+                    <a href="javascript:void(0);" 
+                       class="project-button button" 
+                       data-project-id="@project.Id">Детали проекта</a>
+                }
+                        </div>
+                    </div>
+                    <div class="menu-item-back"></div> <!-- Исправлено закрытие тега -->
+                </div>
+            }
+        </div> <!-- Закрывающий тег для .menu -->
+    </div>
+    <div class="right-panel">
+        <div class="main">
+             @RenderBody()
+            <div class="main-back"></div> 
+        </div>
+    </div>
+</div>
     <footer class="border-top footer text-muted">
         
     </footer>
  
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.project-button').click(function() {
+            var projectId = $(this).data('project-id');
+            
+            $.ajax({
+                url: '@Url.Action("ProjectDetails", "Home")',
+                data: { projectId: projectId },
+                success: function(result) {
+                    $('.main').html(result); // Обновить div.main
+                },
+                error: function() {
+                    alert('Ошибка при загрузке данных проекта');
+                }
+            });
+        });
+    });
+</script>

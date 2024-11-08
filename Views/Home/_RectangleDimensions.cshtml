@@ -1,0 +1,16 @@
+@{
+    int rectangleCount = ViewBag.RectangleCount;
+}
+
+<form id="dimensionsForm">
+    @for (int i = 0; i < rectangleCount; i++)
+    {
+        <div>
+            <label>Сторона A прямоугольника @i:</label>
+            <input type="number" name="a" required min="1" />
+
+            <label>Сторона B прямоугольника @i:</label>
+            <input type="number" name="b" required min="1" />
+        </div>
+    }
+</form>
