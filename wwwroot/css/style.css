@@ -124,9 +124,9 @@
 }
 
 .main-body {
-    padding: 10px;
-    display: flex;
+    display: block;
     justify-content: center;
+    margin: 20px;
 }
 
 .main-body img {

@@ -61,7 +61,65 @@ namespace ProjectsForCollege.Controllers
 
         return Json(new { minArea });
     }
-    
+        [HttpPost]
+        public IActionResult Calculate(double sideA, double sideB, double sideC)
+        {
+            var triangle = new Triangle(sideA, sideB, sideC);
+
+            if (!triangle.IsValid())
+            {
+                return BadRequest("Invalid triangle sides.");
+            }
+
+            var result = new
+            {
+                perimeter = triangle.CalculatePerimeter(),
+                area = triangle.CalculateArea(),
+                centroid = triangle.CalculateCentroid()
+            };
+
+            return Json(result);
+        }
+
+         public IActionResult ProcessArray([FromBody] int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return BadRequest("Invalid array.");
+            }
+
+            // Нахождение максимального элемента
+            int maxIndex = FindMaxIndex(array);
+
+            // Замена элементов после максимального на 0
+            for (int i = maxIndex + 1; i < array.Length; i++)
+            {
+                array[i] = 0;
+            }
+
+            // Подготовка ответа
+            var result = new
+            {
+                array = array,
+                maxElement = array[maxIndex]
+            };
+
+            return Json(result);
+        }
+
+        // Метод для нахождения индекса максимального элемента
+        private int FindMaxIndex(int[] array)
+        {
+            int maxIndex = 0;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > array[maxIndex])
+                {
+                    maxIndex = i;
+                }
+            }
+            return maxIndex;
+        }
 
     [HttpPost]
     public IActionResult SetHeader(int teacherId, int projectId)

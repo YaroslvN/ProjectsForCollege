@@ -5,10 +5,49 @@
         <h3>@Model.Description</h3>
     </div>
     <div class="main-body">
-        
+        <form id="arrayForm">
+    <label for="arrayInput">Array (comma separated):</label>
+    <input type="text" id="arrayInput" name="array" required />
+    <button type="submit">Submit</button>
+</form>
+
+<h3>Processed Array</h3>
+<p><strong>Maximum Element:</strong> <span id="maxElement"></span></p>
+<p><strong>Modified Array:</strong> <span id="modifiedArray"></span></p>
     </div>
     <div class="main-footer">
         <button class="switch-project-right button">Вперед</button>
         <button class="switch-project-left button">Назад</button>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#arrayForm').on('submit', function (event) {
+            event.preventDefault();
+
+            // Получаем введённые данные и конвертируем их в массив
+            var arrayString = $('#arrayInput').val();
+            var array = arrayString.split(',').map(function (item) {
+                return parseInt(item.trim(), 10);
+            });
+
+            // Отправляем данные на сервер через AJAX
+            $.ajax({
+                url: '/Home/ProcessArray', 
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(array),
+                success: function (response) {
+                    // Выводим результат
+                    $('#maxElement').text(response.maxElement);
+                    $('#modifiedArray').text(response.array.join(', '));
+                },
+                error: function () {
+                    alert("Error processing the array.");
+                }
+            });
+        });
+    });
+</script>
