@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UpdateProjectsForCollege</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/_Layout.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container-header">
+            <a class="navbar-home" asp-area="" asp-controller="Home" asp-action="Index">ПРАКТИЧЕСКИЕ</a>
+            <ul class="navbar-items">
+                <li><a class="navbar-item" asp-area="" asp-controller="Home" asp-action="Index">Сис. прог.</a></li>
+                <li><a class="navbar-item" asp-area="" asp-controller="Home" asp-action="Privacy">Сис. прог.</a></li>
+            </ul>
+        </div>
+   </header>
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - UpdateProjectsForCollege - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>
