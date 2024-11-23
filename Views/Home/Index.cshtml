@@ -4,70 +4,87 @@
 
 @for (int i = 0; i < 3; i++)
 {
-    <section>
-        <div class="section-header">
+    <section class="info">
+        <div class="info_header section_header">
             <h2>Системное программирование</h2>
         </div>
-        <div class="section-content">
-            <div class="menu-panel">
-                <h3 class="menu-panel-title">Практические</h3>
-                <ul class="menu-panel-items">
-                    @for (int j = 0; j < 4; j++)
-                    {
-                        <li class="menu-panel-item">
-                            <button class="menu-panel-button">Практические</button>
-                        </li>
-                    }
-                </ul>
+        <div class="info_main section-main">
+            <div class="info-main_menu">
+                <div class="info-main-menu_title info-title">
+                    <h3>Практические</h3>
+                </div>
+                <div class="info-main-menu_main">
+                    <div class="info-menu-main_scrollbar scrollbar">
+                        @for (int j = 0; j < 6; j++)
+                        {
+                            <button class="info-main-scrollbar_btnPractical">Практические</button>
+                        }
+                    </div>
+                </div>
             </div>
-            <div class="description-panel">
-                <h3 class="description-panel-title">Описание</h3>
-                <p class="description-panel-text">
-                    Дано целое число N и набор из N прямоугольников, заданных своими сторонами — парами чисел (a, b). Найти
-                    минимальную площадь прямоугольника из данного набора.
-                </p>
-                <button class="description-panel-button-execute">Перейти к решению</button>
+            <div class="info-main_description">
+                <div class="info-main-description_title info-title">
+                    <h3>Описание</h3>
+                </div>
+                <div class="info-description_main">
+                    <p>
+                        Дано целое число N и набор из N прямоугольников, заданных своими сторонами — парами чисел (a, b).
+                        Найти
+                        минимальную площадь прямоугольника из данного набора.
+                    </p>
+                </div>
+                <div class="info-description_footer">
+                    <button class="info-description-footer_btnSolution button">Перейти к решению</button>
+                </div>
             </div>
         </div>
     </section>
 }
 
-<section class="section-solution">
-    <div class="section-header">
+<section class="solution">
+    <div class="solution_header section_header">
         <h2>Решение</h2>
     </div>
-    <div class="solution-calculator section-content">
-        <div class="input-section data-section">
-            <h3 class="input-section-title">Введите данные</h3>
+    <div class="solution_main section-main">
+        <div class="solution-main_input solution-main_block">
+            <div class="solution-main-input_title">
+                <h3>Введите данные</h3>
+            </div>
             <form method="post">
-                <div class="input-group">
-                    <label for="side-a">Сторона A:</label><br>
-                    <input id="side-a" class="input-field" type="text" />
-                </div>
-                <div class="input-group">
-                    <label for="side-b">Сторона B:</label><br>
-                    <input id="side-b" class="input-field" type="text" />
-                </div>
-                <div class="input-group">
-                    <label for="side-c">Сторона C:</label><br>
-                    <input id="side-c" class="input-field" type="text" />
-                </div>
-                <button class="submit-button">Показать результат</button>
-            </form>
-        </div>
-        <div class="output-section data-section">
-            <h3 class="output-section-title">Свойства треугольника</h3>
-            <div class="output-section-main">
-                <div class="output-group">
-                    <label for="area">Площадь:</label>
-                    <div id="area" class="output-value">
-                        <p>349</p>
+                <div class="solution-input-form_main">
+                    <div class="solution-form-main_sideA input-block">
+                        <label>Сторона A:</label><br>
+                        <input class="solution-main-sideA_input input-field" type="text" />
+                    </div>
+                    <div class="solution-form-main_sideB input-block">
+                        <label>Сторона B:</label><br>
+                        <input class="solution-main-sideB_input input-field" type="text" />
+                    </div>
+                    <div class="solution-form-main_sideC input-block">
+                        <label>Сторона C:</label><br>
+                        <input class="solution-main-sideC_input input-field" type="text" />
                     </div>
                 </div>
-                <div class="output-group">
-                    <label for="perimeter">Периметр:</label>
-                    <div id="perimeter" class="output-value">
-                        <p>349</p>
+                <div class="solution-input-form_footer">
+                    <button class="solution-form-footer_btnSubmit button">Показать результат</button>
+                </div>
+            </form>
+        </div>
+        <div class="solution-main_output solution-main_block">
+            <div class="solution-main-output_title">
+                <h3>Свойства треугольника</h3>
+            </div>
+            <div class="solution-output_main">
+                <div class="solution-output-main_area output-block">
+                    <label>Площадь:</label>
+                    <div class="solution-main-area_value output-value">
+                        <p>99999</p>
+                    </div>
+                </div>
+                <div class="solution-output-main_perimeter output-block">
+                    <label>Периметр:</label>
+                    <div class="solution-main-perimeter_value">
+                        <p>11111</p>
                     </div>
                 </div>
             </div>
@@ -76,44 +93,54 @@
     </div>
 </section>
 
-<section class="section-solution">
-    <div class="section-header">
+<section class="solution">
+    <div class="solutin_header section_header">
         <h2>Решение</h2>
     </div>
-    <div class="solution-calculator section-content">
-        <div class="input-section data-section">
-            <h3 class="input-section-title">Введите данные</h3>
+    <div class="solution-main section-main">
+        <div class="solution-main_input solution-main_block">
+            <div class="solution-main-input_title">
+                <h3>Введите данные</h3>
+            </div>
             <form method="post">
-                <div class="input-group">
-                    <label for="side-c">Количество прямоуголников:</label><br>
-                    <input id="side-c" class="input-field" type="text" />
+                <div class="solution-input-form_main">
+                    <div class="solution-form-main_numRectangles input-block">
+                        <label for="num-rectangles">Количество прямоуголников:</label><br>
+                        <input id="num-rectangles" class="solution-main-numRectangles_input input-field" type="text" />
+                    </div>
                 </div>
-                <button class="submit-button">Показать результат</button>
+                <div class="solution-input-form_footer">
+                    <button class="solution-form-footer_btnSubmit button">Показать результат</button>
+                </div>
             </form>
         </div>
-        <div class="output-section data-section">
-            <h3 class="output-section-title">Свойства треугольника</h3>
-            <div class="output-section-main">
-                <form method="post">
-                    <div class="scrollbar">
+        <div class="solution-main_output solution-main_block">
+            <div class="solution-main-output_title">
+                <h3>Минимальная площадь прямоугольника</h3>
+            </div>
+            <form method="post">
+                <div class="solution-output_main">
+                    <div class="solution-form-main_scrollbar scrollbar">
                         @for (int i = 0; i < 4; i++)
                         {
                             <fieldset>
-                                <legend>Прямоугольника @(i + 1)</legend>
-                                <div class="input-group ">
-                                    <label for="side-a">Сторона A:</label><br>
-                                    <input id="side-a" class="input-field" type="text" />
+                                <legend>Прямоугольник @(i + 1)</legend>
+                                <div class="solution-main-scrollbar_sideA input-block">
+                                    <label>Сторона A:</label><br>
+                                    <input class="solution-main-scrollbar_sideA input-field" type="text" />
                                 </div>
-                                <div class="input-group">
-                                    <label for="side-b">Сторона B:</label><br>
-                                    <input id="side-b" class="input-field" type="text" />
+                                <div class="solution-main-scrollbar_sideB input-block">
+                                    <label>Сторона B:</label><br>
+                                    <input class="solution-main-scrollbar_sideB input-field" type="text" />
                                 </div>
                             </fieldset>
                         }
                     </div>
-                        <button class="submit-button">Показать результат</button>
-                </form>
-            </div>
+                </div>
+                <div class="solution-output-form_footer">
+                    <button class="solution-form-footer_btnSubmit button">Показать результат</button>
+                </div>
+            </form>
         </div>
     </div>
 </section>
